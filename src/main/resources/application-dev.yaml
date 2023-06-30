@@ -1,0 +1,31 @@
+server:
+  port: 8181
+
+fake-api:
+  url: https://fakestoreapi.com
+
+spring:
+  #profiles:
+   #   active=${APP_PROFILE:test}:
+  datasource:
+    url: jdbc:postgresql://172.27.179.88:5432/apifake
+    username: root
+    password: 12345678
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        package-to-scan: com.eliasneri.apifake.infrastructure.entities
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        show-sql: true
+
+  cloud:
+    loadbalancer:
+      ribbon:
+        enable: true
+
+
+
